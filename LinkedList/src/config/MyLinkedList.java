@@ -131,4 +131,15 @@ public class MyLinkedList<T> {
         return this.size;
     }
 
+    public Node<T> getHead(){
+        return this.head;
+    }
+
+    public void setHead(Node<T> head) {
+        this.head = head;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
 }
