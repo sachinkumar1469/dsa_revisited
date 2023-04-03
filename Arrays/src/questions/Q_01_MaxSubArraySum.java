@@ -1,6 +1,9 @@
 package questions;
 
-public class Q1_MAX_SUB_ARRAY_SUM {
+
+// Ref alpha batch
+// Time complexity O(n^3)
+public class Q_01_MaxSubArraySum {
     public static int maxSum(int[] arr){
         int maxSum = Integer.MIN_VALUE;
         for(int i=0;i<arr.length;i++){
