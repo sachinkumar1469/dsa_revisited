@@ -8,19 +8,19 @@ public class Q_03_PrintNodeBetweenK1K2 {
         if(root == null){
             return;
         }
-        int max = Math.max(k1,k2);
-        int min = Math.min(k1,k2);
-        int rootData = (int) root.data;
-//        System.out.println(max+" "+min);
-        if(rootData<max && rootData>min){
-            System.out.print(rootData+" ");
+
+        int data = (int) root.data;
+
+        if(data >=k1 && data <= k2){
+            System.out.print(data+" ");
             print(root.left,k1,k2);
             print(root.right,k1,k2);
-        } else if(rootData<max){
+        } else if(data < k1){
             print(root.right,k1,k2);
-        } else if(rootData>=max){
+        } else if(data > k2){
             print(root.left,k1,k2);
         }
+
     }
     public static void main(String[] args) {
         BT<Integer> tree = new BT<>();

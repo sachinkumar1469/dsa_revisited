@@ -153,6 +153,38 @@ public class BT <T>{
     public static BTNode<Integer> inOrderPreOrder(int[] inOrder,int[] preOrder){
         return inOrderPreOrderHelper(inOrder,0,inOrder.length-1,preOrder,0,preOrder.length-1);
     }
+
+    public static BTNode<Integer> inOrderPostOrderHelper(int[] in, int inStart, int inEnd,int[] post, int postStart, int postEnd){
+        if(postStart>postEnd){
+            return null;
+        }
+        int rootData = post[postEnd];
+        int rootIndexInorder = -1;
+        for(var i=inStart;i<=inEnd;i++){
+            if(in[i]==rootData){
+                rootIndexInorder = i;
+                break;
+            }
+        }
+
+        int leftInStart = inStart;
+        int leftInEnd = rootIndexInorder - 1;
+        int leftPostStart = postStart;
+        int leftPostEnd = leftPostStart + (leftInEnd - leftInStart + 1) - 1;
+
+        int rightInStart = rootIndexInorder + 1;
+        int rightInEnd = inEnd;
+        int rightPostStart = leftPostEnd + 1;
+        int rightPostEnd = postEnd -1;
+
+        BTNode<Integer> root = new BTNode<>(rootData);
+        root.left = inOrderPostOrderHelper(in,leftInStart,leftInEnd,post,leftPostStart,leftPostEnd);
+        root.right = inOrderPostOrderHelper(in,rightInStart,rightInEnd,post,rightPostStart,rightPostEnd);
+        return root;
+    }
+    public static BTNode<Integer> inOrderPostOrder(int[] inOrder,int[] postOrder){
+        return inOrderPostOrderHelper(inOrder,0,inOrder.length-1,postOrder,0,postOrder.length-1);
+    }
     public static int countNodes(BTNode rootNode){
         if(rootNode == null){
             return 0;
