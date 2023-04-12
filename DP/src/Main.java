@@ -6,6 +6,7 @@ public class Main {
         c();
     }
     public static void main(String[] args) {
-        c();
+        String str = "a";
+        System.out.println(str.substring(1));
     }
 }
